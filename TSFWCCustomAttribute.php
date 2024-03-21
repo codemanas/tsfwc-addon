@@ -15,7 +15,7 @@ class TSFWCCustomAttributes {
 	private function __construct() {
 		add_filter( 'cm_tsfwc_product_fields', [ $this, 'modify_schema' ] );
 		add_filter( 'cm_tsfwc_data_before_entry', [ $this, 'format_data' ], 10, 3 );
-		add_action( 'cm_tsfwc_custom_attributes', [ $this, 'your_attribute' ] );
+		add_action( 'cm_tsfwc_custom_attributes', [ $this, 'show_custom_facet' ] );
 	}
 
 	public function modify_schema( $fields ) {
@@ -34,7 +34,7 @@ class TSFWCCustomAttributes {
 		return $formatted_data;
 	}
 
-	public function your_attribute() { ?>
+	public function show_custom_facet() { ?>
         <div
                 data-facet_name="my_custom_facet"
                 data-title="<?php echo __( "Filter by My Custom Facet", 'storefront' ); ?>"
